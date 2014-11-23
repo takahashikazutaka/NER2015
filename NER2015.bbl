@@ -1,0 +1,84 @@
+\begin{thebibliography}{10}
+
+\bibitem{jasper1949}
+Herbert Jasper and Wilder Penfield,
+\newblock ``Electrocorticograms in man: Effect of voluntary movement upon the
+  electrical activity of the precentral gyrus,''
+\newblock {\em Archiv f√ºr Psychiatrie und Nervenkrankheiten}, vol. 183, no.
+  1-2, pp. 163--174, 1949.
+
+\bibitem{neuper2001}
+C~Neuper and G~Pfurtscheller,
+\newblock ``Event-related dynamics of cortical rhythms: frequency-specific
+  features and functional correlates,''
+\newblock {\em International Journal of Psychophysiology}, vol. 43, no. 1, pp.
+  41 -- 58, 2001,
+\newblock Thalamo-Cortical Relationships.
+
+\bibitem{Jurkiewicz20061281}
+Michael~T. Jurkiewicz, William~C. Gaetz, Andreea~C. Bostan, and Douglas Cheyne,
+\newblock ``Post-movement beta rebound is generated in motor cortex: Evidence
+  from neuromagnetic recordings,''
+\newblock {\em NeuroImage}, vol. 32, no. 3, pp. 1281 -- 1289, 2006.
+
+\bibitem{jake2011}
+A~Reimer, P~Hubka, A~K Engel, and A~Kral,
+\newblock ``{Fast propagating waves within the rodent auditory cortex},''
+\newblock {\em Cereb Cortex}, vol. 21, pp. 166--177, 2011.
+
+\bibitem{doug2006betawave}
+Doug Rubino, K~A Robbins, and Nicholas~G Hatsopoulos,
+\newblock ``{Propagating waves mediate information transfer in the motor
+  cortex.},''
+\newblock {\em Nature Neuroscience.}, vol. 9, no. 12, pp. 1549--1557, Dec.
+  2006.
+
+\bibitem{taka2011humanbetawave}
+Kazutaka Takahashi, Maryam Saleh, Richard~D Penn, and Nicholas Hatsopoulos,
+\newblock ``{Propagating waves in human motor cortex},''
+\newblock {\em Front Hum Neurosci.}, vol. 5, no. 0, 2011.
+
+\bibitem{takens1981detecting}
+Floris Takens,
+\newblock ``Detecting strange attractors in turbulence,''
+\newblock in {\em Dynamical systems and turbulence, Warwick 1980}, pp.
+  366--381. Springer, 1981.
+
+\bibitem{eckmann1987recurrence}
+J-P Eckmann, S~Oliffson Kamphorst, and David Ruelle,
+\newblock ``Recurrence plots of dynamical systems,''
+\newblock {\em EPL (Europhysics Letters)}, vol. 4, no. 9, pp. 973, 1987.
+
+\bibitem{marwan2009complex}
+Norbert Marwan, Jonathan~F Donges, Yong Zou, Reik~V Donner, and J{\"u}rgen
+  Kurths,
+\newblock ``Complex network approach for recurrence analysis of time series,''
+\newblock {\em Physics Letters A}, vol. 373, no. 46, pp. 4246--4254, 2009.
+
+\bibitem{donner2010recurrence}
+Reik~V Donner, Yong Zou, Jonathan~F Donges, Norbert Marwan, and J{\"u}rgen
+  Kurths,
+\newblock ``Recurrence networks—a novel paradigm for nonlinear time series
+  analysis,''
+\newblock {\em New Journal of Physics}, vol. 12, no. 3, pp. 033025, 2010.
+
+\bibitem{watts1998collective}
+Duncan~J Watts and Steven~H Strogatz,
+\newblock ``Collective dynamics of ‘small-world’networks,''
+\newblock {\em nature}, vol. 393, no. 6684, pp. 440--442, 1998.
+
+\bibitem{hegger1999improved}
+Rainer Hegger and Holger Kantz,
+\newblock ``Improved false nearest neighbor method to detect determinism in
+  time series data,''
+\newblock {\em Physical Review E}, vol. 60, no. 4, pp. 4970, 1999.
+
+\bibitem{donner2011recurrence}
+Reik~V Donner, Michael Small, Jonathan~F Donges, Norbert Marwan, Yong Zou,
+  Ruoxi Xiang, and J{\"u}rgen Kurths,
+\newblock ``Recurrence-based time series analysis by means of complex network
+  methods,''
+\newblock {\em International Journal of Bifurcation and Chaos}, vol. 21, no.
+  04, pp. 1019--1046, 2011.
+
+\end{thebibliography}

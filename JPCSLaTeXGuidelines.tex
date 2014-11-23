@@ -1,0 +1,1074 @@
+\documentclass[ieeeconf}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{iopams}
+\usepackage{citesort}
+
+\begin{document}
+\title{Complexity analysis of spatiotemporal pattern of local field potentials from motor cortex.}
+
+\author{Narayan Puthanmadam Subramaniyam$^1$, Jari Hyttinen$^1$, \\
+Nicholas G Hatsopoulos$^2$, and Kazutaka Takahashi$^2$}
+
+\address{1. Department of Biomedical Engineering, Tampere University of Technology, Tampere, Finland\\
+2. Department of Organismal Biology and Anatomy, University of Chicago, Chicago, IL 60615, USA}
+
+\ead{\{narayan.ps, jari.hyttinen\}@tut.fi, \{nicho, kazutaka\}@uchicago.edu}
+
+
+\begin{abstract}
+Aggregate signals that reflect activities of a large number of neurons in the cerebral cortex, local field potentials (LFPs) have been observed to mediate gross functional activities of a relatively small volume of the brain tissues. There are several bands of the oscillations frequencies in LFPs have been observed across multiple brain areas. 
+The signature oscillation band of the LFPs in the primary motor cortex (MI) is over $\beta$ range and it has been consistently observed both in human and non-human primates around the time of visual cues and movement onsets. 
+However, its dynamical behavior has not been well characterized. Furthermore, spatiotemporal dynamics of $\beta$ oscillations has been documented based on the phase gradient of $\beta$ oscillations, but not in terms of the inherent dynamics of the oscillations themselves. Here, we used the complexity measure derived from cluster coefficients of a recurrent network and analyzed a wide-band and $\beta$ band of the LFPs in MI recorded from a non-human primate. We show a rather unique temporal profile of the complexity of the dynamical behavior of the oscillation, which are not resembling either the power of the oscillation or the phase locking of $\beta$ oscillations. Furthermore, there appears to show some spattiotemporal patterns over the recorded part of MI. Our new approach may give us more insight as to how local circuitry of the cortex is temporally and spatially organized for its function. 
+\end{abstract}
+
+\section{Introduction}
+Cortical rhythms have been extensively studied since early descriptions of oscillations in sensorimotor cortex by Jasper and Penfield \cite{jasper1949}. Since In particular, local field potentials (LFPs)
+and electroencephalograms (EEG) in the $\beta$ frequency range (15-40 Hz) are ubiquitous in the motor cortex of mammals including monkeys and humans across the upper limb area of the primary motor cortex (MI). The dynamics of the $\beta$ oscillation has been grossly characterized, based on a temporal profile of the amplitude of the oscillations, such as event related synchronization (ERS) and event related desynchronization (ERD) \cite{neuper2001, Jurkiewicz20061281}, and phase locking to the instruction cues \cite{jake2011}. However, the dynamical properties of $\beta$ oscillations have not been well characterized. Recently, it has been reported that phase of $\beta$ oscillations propagated as plane waves along the rostrocaudal
+axis of the motor cortex during motor preparation and execution, and are
+believed to subserve cortical information transfer
+\cite{doug2006betawave}. However, it has not been shown inherent dynamics of LFPs, in particular, $\beta$ oscillations, and their spatiotemporal dynamics. 
+
+
+
+%They represent the summed activity of multiple postsynaptic potentials near the recording electrode site. however, little is %known about the relationship between the wave propagation of cortical oscillations and the information flow
+%among individual neurons across the motor cortex. Recently, directed
+%information between pairs of neurons was studied using multiple
+%spike trains in the MI of a monkey \cite{ref:Chris2011}, but they
+%considered only pairwise directed information and did not analyze
+%how the network might change in relationship to the stimulus.
+
+
+
+\cite{doug2006betawave}, \cite{taka2011humanbetawave}
+
+\section{Method}
+\label{sec:method}
+
+\subsection{Behavior task and data collection}
+
+All of the surgical and behavioral procedures were approved by the
+University of Chicago IACUC and conform to the principles outlines
+in the Guide for the Care and Use of Laboratory Animals. One
+monkey was trained to perform a visuomotor task using a two-link
+exoskeleton manipulandum \cite{ref:Scott99}. The monkey was
+required to move a cursor on a horizontal screen that was aligned
+to the monkey's hand to the position of a target. When the monkey
+successfully reached the current target, a new target was
+displayed at a random location within a workspace while the
+current target disappeared. The monkey received a juice reward
+after successfully acquiring five or seven consecutive targets.
+
+We recorded local field potentials (LFPs) from up to 96 channels simultaneously at 1 kHz from MI in
+the monkey using an Utah microelectrode array (Blackrock
+Microsystems; $1$ mm in length and $400 \mu$m inter-electrode
+spacing) implanted contralateral to the moving arm. We analyzed 1000 consecutive
+successful trials. The LFPs were bidirectionally lowpass filtered at $200$ Hz with a 3rd order Butterworth filter. The partitioned into a series of windows of 150 ms starting from  the following time windows istarting  $[-100, 50]$ ms in relation to visual cue onset, incremented by 10 ms up to 
+$[200, 350]$ ms.
+
+
+\subsection{Recurrence Networks}
+Given an univariate time series $\{u(i) , i = 1,2, \cdots ,N \}$, one can reconstruct the phase space trajectory of the underlying dynamics using the method of delays ref.~\cite{takens1981detecting}
+\begin{equation}
+\mathbf{x}_{i} = (u(i),u(i+\tau),\cdots,u(i+(m-1)\tau)),
+\end{equation}
+where $\mathbf{x}_{i} \in \mathbb{R}^m$, $\tau$ is the embedding delay determined as the first local minimum of the auto mutual information and $m$ is the embedding dimension which can be determined using the false nearest neighbor (FNN) approach. One can visualize the dynamics of the phase space trajectories using the method of recurrence plots ref.~\cite{eckmann1987recurrence}. A Recurrence plot (RP) is a graphical representation of the recurrence matrix, which is a closeness test depicting the times when two states visit roughly the same area in phase space. This closeness can be defined based on Euclidean or Manhattan or maximum norm. A recurrence matrix $\mathbf{R}$ depicting the closeness between the pairs of state vectors can be given as in~\cite{marwan2009complex,donner2010recurrence}
+\begin{equation}
+R_{i,j}(\epsilon)=\Theta(\varepsilon - \| x_{i}-x_{j}\|),
+\end{equation}
+where $\Theta(\cdot)$ is the Heaviside function, $\|\cdot\|$ is a distance norm, and $\varepsilon $ is the recurrence threshold specifying the maximum spatial distance of neighboring states. The recurrence matrix is a binary, symmetric matrix with an entry of 1 if the distance between two states is less than the recurrence threshold $\varepsilon$, else the entry is 0. The recurrence matrix can be reinterpreted as an adjacency matrix after the following transformation \cite{marwan2009complex,donner2010recurrence},
+\begin{equation}
+\mathbf{A} = \mathbf{R}-\mathbf{I},
+\end{equation}
+where $\mathbf{I}$ is the identity matrix. The above operation simply eliminates the artificial self-loops. The adjacency matrix $\mathbf{A}$ represents an undirected, unweighted complex network known as the recurrence network ref.~\cite{donner2010recurrence}. 
+The recurrence network can be characterized using graph theoretical methods to reflect the dynamically invariant properties of the associated dynamical system. In this work, we compute the global clustering coefficient $C$ of the recurrence network. Given a network with $N$ nodes and $V$ vertices, the local clustering coefficient of a node $i$ can be defined as the likelihood that the neighbors of $i$ will also be neighbors of each other. Formally, the local clustering coefficient of a node $i$ can be given as in~\cite{watts1998collective},
+\begin{equation}
+c(i)=\frac{\sum_{j,r}A_{i,j}A_{j,r}A_{r,i}}{k_{i}(k_{i}-1)},
+\end{equation}
+where $k$ is the degree of a node. The Global clustering coefficient is simply the average of local clustering coefficient computed over all the nodes of a network and is given as,
+\begin{equation}
+C= \frac{1}{N}\sum_{i\in\mathcal{N}}c(i).
+\end{equation}
+
+
+In order to perform the analysis described above, we divided the LFP data from all the 96 channels into 8 overlapping windows for each event and computed the recurrence network measure $C$ for each window. In order to find the optimal embedding parameters, we computed the first minimum of the auto mutual information for data from all the channels and found that $\tau$ varied between 2 to 4. Similarly, to determine the embedding dimension, we used the improved FNN approach \cite{hegger1999improved} to avoid spurious effects due to noise and found that the embedding dimension varied between 3 to 5 for all the data. Thus we fixed the embedding delay at 6 and the embedding dimension at 5 (it varied between 3 and 5 as per the modified FNN method) to construct recurrence networks of the same size. Instead of specifying the recurrence threshold $\varepsilon$, we fix the recurrence rate $RR = 0.03$ so that we obtain recurrence networks with approximately the same number of edges so that we can compare the networks obtained from different time windows \cite{donner2011recurrence}. 
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Temporal profiles of cluster coefficients}
+The cluster coefficients 
+%The causality networks between the recorded neural spike trains
+%were identified using the method in \cite{ref:Sanggyun}, and the
+%results were illustrated in Fig.~\ref{fig:cnetwork}.
+%Fig.~\ref{fig:cnetwork}~(a), (b), and (c) show the statistically
+%significant causal interactions at different timings in relation
+%to the visual cue onset: Time Window 1 for $[-100, 50]$ ms, 2 for
+%$[50, 200]$ ms, and 3 for $[200, 350]$ ms, respectively. The
+%relative positions of neurons in the diagrams correspond to the
+%relative positions of the electrode on the array where the neurons
+%were detected. Adjacent neurons (nodes) were recorded from a same
+%electrode. The location of the array is such that the lower right
+%corner is oriented caudal and the upper left rostral.
+
+\begin{figure}[ht!]
+\begin{minipage}{10pc}
+\includegraphics[width=11pc]{MeanLowpassedAmp.eps}
+\caption{\label{label}Temporal profile of amplitude of lowpassed LFPs at $200$ Hz around the target appearance which is indicated at $0$ ms.}
+\end{minipage}\hspace{2pc}
+\begin{minipage}{10pc}
+\includegraphics[width=11pc]{GrandMeanCC.eps}
+\caption{\label{label}Temporal profile of cluster coefficients, $C$ for $\beta$ oscillation around the target appearance which is indicated at $0$ ms.}
+\end{minipage} \hspace{2pc}
+\begin{minipage}{10pc}
+\includegraphics[width=11pc]{MeanPSD.eps}
+\caption{\label{label}Averaged power spectrum of LFPs computed over $[-150,300]$ms around the target appearance for all used events.}
+\end{minipage}
+
+\begin{minipage}{10pc}
+\includegraphics[width=11pc]{betaAMP.eps}
+\caption{\label{label}Temporal profile of amplitude of $\beta$ oscillation around the target appearance which is indicated at $0$ ms.}
+\end{minipage}\hspace{2pc}
+\begin{minipage}{10pc}
+\includegraphics[width=11pc]{betaCCMean.eps}
+\caption{\label{label}Temporal profile of cluster coefficients, $C$ for $\beta$ oscillation around the target appearance which is indicated at $0$ ms.}
+\end{minipage}\hspace{2pc}
+\begin{minipage}{10pc}
+\includegraphics[width=11pc]{betaPPL.eps}
+\caption{\label{label}Temporal profile of percentage of phase locking of $\beta$ oscillation around the target appearance which is indicated at $0$ ms.}
+\end{minipage} 
+\end{figure}
+
+
+\subsection{Spatiotemporal profiles of cluster coefficients}
+
+As shown in Fig.~\ref{fig:cnetwork}, most causal interactions were
+detected for Time Window 2 than other two intervals. These
+causality networks were obtained from the data set1, and we
+obtained similar results using data sets 2 and 3 as well. In order
+to look into the causality network consistency over data sets, we
+plotted the degrees of all neurons for 3 data sets in
+Fig.~\ref{fig:degree}.  All data sets had similar distributions of
+degrees and same `hub' neurons 9 and 15 - neurons with unusually
+high degree. Interestingly neurons recorded from a same electrode
+were not interacting with one another, but they were causally
+influencing on neurons from different electrodes.
+
+\begin{figure}[ht!]
+\begin{center}
+\includegraphics[width=6.5in]{LPSpatiotemporal.eps}
+\end{center}
+\caption{Cluster coefficients of lowpassed signals of each channels over time around the target appearance mapped to their anatomical locations over the array. R:Rostral, C:Caudal, M:Medial, and L:Lateral.}
+\label{fig:STmapLP}
+\end{figure}
+\begin{figure}[ht!]
+\begin{center}
+\includegraphics[width=6.5in]{BetaSpatiotemporal.eps}
+\end{center}
+\caption{Same as Fig. \ref{fig:STmapLP}, but for $\beta$ range of LFPs.}
+\label{fig:degree}
+\end{figure}
+
+\section{Discussions}
+\label{sec:discussions}
+
+\section{References}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%In the online version of \jpcs\ references will be linked to their original source or to the article within a secondary service such as INSPEC or ChemPort wherever possible. To facilitate this linking extra care should be taken when preparing reference lists. 
+%
+%Two different styles of referencing are in common use: the Harvard alphabetical system and the Vancouver numerical system.  For \jpcs, the Vancouver numerical system is preferred but authors should use the Harvard alphabetical system if they wish to do so. In the numerical system references are numbered sequentially throughout the text within square brackets, like this [2], and one number can be used to designate several references.  
+%
+%\subsection{Using \BibTeX}
+%We highly recommend the {\ttfamily\textbf\selectfont iopart-num} \BibTeX\ package by Mark~A~Caprio \cite{iopartnum}, which is included with this documentation.
+%
+%\subsection{Reference lists}
+%A complete reference should provide the reader with enough information to locate the article concerned, whether published in print or electronic form, and should, depending on the type of reference, consist of:  
+%
+%\begin{itemize}
+%\item name(s) and initials;
+%\item date published;
+%\item title of journal, book or other publication; 
+%\item titles of journal articles may also be included (optional);
+%\item volume number;
+%\item editors, if any;
+%\item town of publication and publisher in parentheses for {\it books};
+%\item the page numbers.
+%\end{itemize}
+%
+%Up to ten authors may be given in a particular reference; where 
+%there are more than ten only the first should be given followed by 
+%`{\it et al}'. If an author is unsure of a particular journal's abbreviated title it is best to leave the title in 
+%full. The terms {\it loc.\ cit.\ }and {\it ibid.\ }should not be used. 
+%Unpublished conferences and reports should generally not be included 
+%in the reference list and articles in the course of publication should 
+%be entered only if the journal of publication is known. 
+%A thesis submitted for a higher degree may be included 
+%in the reference list if it has not been superseded by a published 
+%paper and is available through a library; sufficient information 
+%should be given for it to be traced readily.
+%
+%\subsection{Formatting reference lists}
+%Numeric reference lists should contain the references within an unnumbered section (such as \verb"\section*{References}"). The 
+%reference list itself is started by the code 
+%\verb"\begin{thebibliography}{<num>}", where \verb"<num>" is the largest
+%number in the reference list and is completed by
+%\verb"\end{thebibliography}". 
+%Each reference starts with \verb"\bibitem{<label>}", where `label' is the label used for cross-referencing. Each \verb"\bibitem" should only contain a reference to a single article (or a single article and a preprint reference to the same article).  When one number actually covers a group of two or more references to different articles, \verb"\nonum"
+%should replace \verb"\bibitem{<label>}" at
+%the start of each reference in the group after the first.
+%
+%For an alphabetic reference list use \verb"\begin{thereferences}" ... \verb"\end{thereferences}" instead of the
+%`thebibliography' environment and each reference can be start with just \verb"\item" instead of \verb"\bibitem{label}"
+%as cross referencing is less useful for alphabetic references.
+%
+%\subsection {References to printed journal articles}
+%A normal reference to a journal article contains three changes of font (see table \ref{jfonts}) and is constructed as follows:
+%
+%\begin{itemize}
+%\item the authors should be in the form surname (with only the first letter capitalized) followed by the initials with no periods after the initials. Authors should be separated by a comma except for the last two which should be separated by `and' with no comma preceding it;
+%\item the article title (if given) should be in lower case letters, except for an initial capital, and should follow the date;
+%\item the journal title is in italic and is abbreviated. If a journal has several parts denoted by different letters the part letter should be inserted after the journal in Roman type, e.g. {\it Phys. Rev.} A;
+%\item the volume number should be in bold type;
+%\item both the initial and final page numbers should be given where possible. The final page number should be in the shortest possible form and separated from the initial page number by an en rule `-- ', e.g. 1203--14, i.e. the numbers `12' are not repeated.
+%\end{itemize}
+%
+%A typical (numerical) reference list might begin
+%
+%\medskip
+%\begin{thebibliography}{9}
+%\item Strite S and Morkoc H 1992 {\it J. Vac. Sci. Technol.} B {\bf 10} 1237 
+%\item Jain S C, Willander M, Narayan J and van Overstraeten R 2000 
+%{\it J. Appl. Phys}. {\bf 87} 965 
+%\item Nakamura S, Senoh M, Nagahama S, Iwase N, Yamada T, Matsushita T, Kiyoku H 
+%and 	Sugimoto Y 1996 {\it Japan. J. Appl. Phys.} {\bf 35} L74 
+%\item Akasaki I, Sota S, Sakai H, Tanaka T, Koike M and Amano H 1996 
+%{\it Electron. Lett.} {\bf 32} 1105 
+%\item O'Leary S K, Foutz B E, Shur M S, Bhapkar U V and Eastman L F 1998 
+%{\it J. Appl. Phys.} {\bf 83} 826 
+%\item Jenkins D W and Dow J D 1989 {\it Phys. Rev.} B {\bf 39} 3317 
+%\end{thebibliography}
+%\smallskip
+%
+%\noindent which would be obtained by typing
+%
+%\begin{verbatim}
+%\begin{\thebibliography}{9}
+%\item Strite S and Morkoc H 1992 {\it J. Vac. Sci. Technol.} B {\bf 10} 1237 
+%\item Jain S C, Willander M, Narayan J and van Overstraeten R 2000 
+%{\it J. Appl. Phys}. {\bf 87} 965 
+%\item Nakamura S, Senoh M, Nagahama S, Iwase N, Yamada T, Matsushita T, Kiyoku H 
+%and 	Sugimoto Y 1996 {\it Japan. J. Appl. Phys.} {\bf 35} L74 
+%\item Akasaki I, Sota S, Sakai H, Tanaka T, Koike M and Amano H 1996 
+%{\it Electron. Lett.} {\bf 32} 1105 
+%\item O'Leary S K, Foutz B E, Shur M S, Bhapkar U V and Eastman L F 1998 
+%{\it J. Appl. Phys.} {\bf 83} 826 
+%\item Jenkins D W and Dow J D 1989 {\it Phys. Rev.} B {\bf 39} 3317 
+%\end{\thebibliography}
+%\end{verbatim}
+%
+%\begin{center}
+%\begin{table}[h]
+%\centering
+%\caption{\label{jfonts}Font styles for a reference to a journal article.} 
+%\begin{tabular}{@{}l*{15}{l}}
+%\br
+%Element&Style\\
+%\mr
+%Authors&Roman type\\
+%Date&Roman type\\
+%Article title (optional)&Roman type\\
+%Journal title&Italic type\\
+%Volume number&Bold type\\
+%Page numbers&Roman type\\
+%\br
+%\end{tabular}
+%\end{table}
+%\end{center}
+%
+%\subsection{References to \jpcs\ articles}
+%Each conference proceeding published in \jpcs\ will be a separate {\it volume}; 
+%references should follow the style for conventional printed journals. For example:\vspace{6pt}
+%\numrefs{1}
+%\item Douglas G 2004 \textit{J. Phys.: Conf. Series} \textbf{1} 23--36
+%\endnumrefs
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{References to preprints}
+%For preprints there are two distinct cases:
+%\renewcommand{\theenumi}{\arabic{enumi}}
+%\begin{enumerate}
+%\item Where the article has been published in a journal and the preprint is supplementary reference information. In this case it should be presented as:
+%\medskip
+%\numrefs{1}
+%\item Kunze K 2003 T-duality and Penrose limits of spatially homogeneous and inhomogeneous cosmologies {\it Phys. Rev.} D {\bf 68} 063517 ({\it Preprint} gr-qc/0303038)
+%\endnumrefs
+%\item Where the only reference available is the preprint. In this case it should be presented as
+%\medskip
+%\numrefs{1}
+%\item Milson R, Coley A, Pravda V and Pravdova A 2004 Alignment and algebraically special tensors {\it Preprint} gr-qc/0401010
+%\endnumrefs
+%\end{enumerate}
+%
+%\subsection{References to electronic-only journals}
+%In general article numbers are given, and no page ranges, as most electronic-only journals start each article on page 1.
+%
+%\begin{itemize} 
+%\item For {\it New Journal of Physics} (article number may have from one to three digits)
+%\numrefs{1}
+%\item Fischer R 2004 Bayesian group analysis of plasma-enhanced chemical vapour deposition data {\it New. J. Phys.} {\bf 6} 25 
+%\endnumrefs
+%\item For SISSA journals the volume is divided into monthly issues and these form part of the article number
+%
+%\numrefs{2}
+%\item Horowitz G T and Maldacena J 2004 The black hole final state {\it J. High Energy Phys.}  	JHEP02(2004)008
+%\item Bentivegna E, Bonanno A and Reuter M 2004 Confronting the IR fixed point cosmology 	with 	high-redshift observations {\it J. Cosmol. Astropart. Phys.} JCAP01(2004)001  
+%\endnumrefs
+%\end{itemize} 
+%
+%\subsection{References to books, conference proceedings and reports}
+%References to books, proceedings and reports are similar to journal references, but have 
+%only two changes of font (see table~\ref{book}). 
+%
+%\begin{table}
+%\centering
+%\caption{\label{book}Font styles for references to books, conference proceedings and reports.}
+%\begin{tabular}{@{}l*{15}{l}}
+%\br
+%Element&Style\\
+%\mr
+%Authors&Roman type\\
+%Date&Roman type\\
+%Book title (optional)&Italic type\\
+%Editors&Roman type\\
+%Place (city, town etc) of publication&Roman type\\
+%Publisher&Roman type\\
+%Volume&Roman type\\
+%Page numbers&Roman type\\
+%\br
+%\end{tabular}
+%\end{table}
+%
+%Points to note are:
+%\medskip
+%\begin{itemize}
+%\item Book titles are in italic and should be spelt out in full with initial capital letters for all except minor words. Words such as Proceedings, Symposium, International, Conference, Second, etc should be abbreviated to {\it Proc.}, {\it Symp.}, {\it Int.}, {\it Conf.}, {\it 2nd}, respectively, but the rest of the title should be given in full, followed by the date of the conference and the town or city where the conference was held. For Laboratory Reports the Laboratory should be spelt out wherever possible, e.g. {\it Argonne National Laboratory Report}.
+%\item The volume number, for example vol 2, should be followed by the editors, if any, in a form such as `ed A J Smith and P R Jones'. Use {\it et al} if there are more than two editors. Next comes the town of publication and publisher, within brackets and separated by a colon, and finally the page numbers preceded by p if only one number is given or pp if both the initial and final numbers are given.
+%\end{itemize}
+%
+%Examples taken from published papers:
+%\medskip
+%
+%\numrefs{99}
+%\item Kurata M 1982 {\it Numerical Analysis for Semiconductor Devices} (Lexington, MA: Heath)
+%\item Selberherr S 1984 {\it Analysis and Simulation of Semiconductor Devices} (Berlin: Springer)
+%\item Sze S M 1969 {\it Physics of Semiconductor Devices} (New York: Wiley-Interscience)
+%\item Dorman L I 1975 {\it Variations of Galactic Cosmic Rays} (Moscow: Moscow State University Press) p 103
+%\item Caplar R and Kulisic P 1973 {\it Proc. Int. Conf. on Nuclear Physics (Munich)} vol 1 (Amsterdam: 	North-Holland/American Elsevier) p 517
+%\item Cheng G X 2001 {\it Raman and Brillouin Scattering-Principles and Applications} (Beijing: Scientific) 
+%\item Szytula A and Leciejewicz J 1989 {\it Handbook on the Physics and Chemistry of Rare Earths} vol 12, ed K A Gschneidner Jr and L Erwin (Amsterdam: Elsevier) p 133
+%\item Kuhn T 1998 {\it Density matrix theory of coherent ultrafast dynamics Theory of Transport Properties of Semiconductor Nanostructures} (Electronic Materials vol 4) ed E Sch\"oll (London: Chapman and Hall) chapter 6 pp 173--214
+%\endnumrefs
+%
+%\section{Tables and table captions}
+%Tables should be numbered serially and referred to in the text 
+%by number (table 1, etc, {\bf rather than} tab. 1). Each table should be a float and be positioned within the text at the most convenient place near to where it is first mentioned in the text. It should have an 
+%explanatory caption which should be as concise as possible. 
+%
+%\subsection{The basic table format}
+%The standard form for a table is:
+%\begin{verbatim}
+%\begin{table}
+%\caption{\label{label}Table caption.}
+%\begin{center}
+%\begin{tabular}{llll}
+%\br
+%Head 1&Head 2&Head 3&Head 4\\
+%\mr
+%1.1&1.2&1.3&1.4\\
+%2.1&2.2&2.3&2.4\\
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+%\end{verbatim}
+%
+%The above code produces table~\ref{ex}.
+%
+%\begin{table}[h]
+%\caption{\label{ex}Table caption.}
+%\begin{center}
+%\begin{tabular}{llll}
+%\br
+%Head 1&Head 2&Head 3&Head 4\\
+%\mr
+%1.1&1.2&1.3&1.4\\
+%2.1&2.2&2.3&2.4\\
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+%
+%Points to note are:
+%\medskip
+%\begin{enumerate}
+%\item The caption comes before the table.
+%\item The normal style is for tables to be centred in the same way as
+%equations. This is accomplished
+%by using \verb"\begin{center}" \dots\ \verb"\end{center}".
+%
+%\item The default alignment of columns should be aligned left.
+%
+%\item Tables should have only horizontal rules and no vertical ones. The rules at
+%the top and bottom are thicker than internal rules and are set with
+%\verb"\br" (bold rule). 
+%The rule separating the headings from the entries is set with
+%\verb"\mr" (medium rule). These commands do not need a following double backslash.
+%
+%\item Numbers in columns should be aligned as appropriate, usually on the decimal point;
+%to help do this a control sequence \verb"\lineup" has been defined 
+%which sets \verb"\0" equal to a space the size of a digit, \verb"\m"
+%to be a space the width of a minus sign, and \verb"\-" to be a left
+%overlapping minus sign. \verb"\-" is for use in text mode while the other
+%two commands may be used in maths or text.
+%(\verb"\lineup" should only be used within a table
+%environment after the caption so that \verb"\-" has its normal meaning
+%elsewhere.) See table~\ref{tabone} for an example of a table where
+%\verb"\lineup" has been used.
+%\end{enumerate}
+%
+%\begin{table}[h]
+%\caption{\label{tabone}A simple example produced using the standard table commands 
+%and $\backslash${\tt lineup} to assist in aligning columns on the 
+%decimal point. The width of the 
+%table and rules is set automatically by the 
+%preamble.} 
+%
+%\begin{center}
+%\lineup
+%\begin{tabular}{*{7}{l}}
+%\br                              
+%$\0\0A$&$B$&$C$&\m$D$&\m$E$&$F$&$\0G$\cr 
+%\mr
+%\0\023.5&60  &0.53&$-20.2$&$-0.22$ &\01.7&\014.5\cr
+%\0\039.7&\-60&0.74&$-51.9$&$-0.208$&47.2 &146\cr 
+%\0123.7 &\00 &0.75&$-57.2$&\m---   &---  &---\cr 
+%3241.56 &60  &0.60&$-48.1$&$-0.29$ &41   &\015\cr 
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+% 
+%\section{Figures and figure captions}
+%Figures must be included in the source code of an article at the appropriate place in the text not grouped together at the end. 
+%
+%Each figure should have a brief caption describing it and, if 
+%necessary, interpreting the various lines and symbols on the figure. 
+%As much lettering as possible should be removed from the figure itself and 
+%included in the caption. If a figure has parts, these should be 
+%labelled ($a$), ($b$), ($c$), etc. 
+%\Tref{blobs} gives the definitions for describing symbols and lines often
+%used within figure captions (more symbols are available
+%when using the optional packages loading the AMS extension fonts).
+%
+%\begin{table}[h]
+%\caption{\label{blobs}Control sequences to describe lines and symbols in figure 
+%captions.}
+%\begin{center}
+%\begin{tabular}{lllll}
+%\br
+%Control sequence&Output&&Control sequence&Output\\
+%\mr
+%\verb"\dotted"&\dotted        &&\verb"\opencircle"&\opencircle\\
+%\verb"\dashed"&\dashed        &&\verb"\opentriangle"&\opentriangle\\
+%\verb"\broken"&\broken&&\verb"\opentriangledown"&\opentriangledown\\
+%\verb"\longbroken"&\longbroken&&\verb"\fullsquare"&\fullsquare\\
+%\verb"\chain"&\chain          &&\verb"\opensquare"&\opensquare\\
+%\verb"\dashddot"&\dashddot    &&\verb"\fullcircle"&\fullcircle\\
+%\verb"\full"&\full            &&\verb"\opendiamond"&\opendiamond\\
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+%
+%
+%Authors should try and use the space allocated to them as economically as possible. At times it may be convenient to put two figures side by side or the caption at the side of a figure. To put figures side by side, within a figure environment, put each figure and its caption into a minipage with an appropriate width (e.g. 3in or 18pc if the figures are of equal size) and then separate the figures slightly by adding some horizontal space between the two minipages (e.g. \verb"\hspace{.2in}" or \verb"\hspace{1.5pc}". To get the caption at the side of the figure add the small horizontal space after the \verb"\includegraphics" command and then put the \verb"\caption" within a minipage of the appropriate width aligned bottom, i.e. \verb"\begin{minipage}[b]{3in}" etc (see code in this file used to generate figures 1--3).
+%
+%Note that it may be necessary to adjust the size of the figures (using optional arguments to \verb"\includegraphics", for instance \verb"[width=3in]") to get you article to fit within your page allowance or to obtain good page breaks.
+%
+%\begin{figure}[h]
+%\begin{minipage}{14pc}
+%\includegraphics[width=14pc]{name.eps}
+%\caption{\label{label}Figure caption for first of two sided figures.}
+%\end{minipage}\hspace{2pc}%
+%\begin{minipage}{14pc}
+%\includegraphics[width=14pc]{name.eps}
+%\caption{\label{label}Figure caption for second of two sided figures.}
+%\end{minipage} 
+%\end{figure}
+%
+%\begin{figure}[h]
+%\includegraphics[width=14pc]{name.eps}\hspace{2pc}%
+%\begin{minipage}[b]{14pc}\caption{\label{label}Figure caption for a narrow figure where the caption is put at the side of the figure.}
+%\end{minipage}
+%\end{figure}
+%
+%Using the graphicx package figures can be included using code such as:
+%\begin{verbatim}
+%\begin{figure}
+%\begin{center}
+%\includegraphics{file.eps}
+%\end{center}
+%\caption{\label{label}Figure caption}
+%\end{figure}
+%\end{verbatim}
+%
+%\section*{References}
+%%\begin{thebibliography}{9}
+%%\bibitem{iopartnum} IOP Publishing is to grateful Mark A Caprio, Center for %Theoretical Physics, Yale University, for permission to include the {\tt %iopart-num} \BibTeX package (version 2.0, December 21, 2006) with  this %documentation. Updates and new releases of {\tt iopart-num} can be found on %%\verb"www.ctan.org" (CTAN). 
+%%\end{thebibliography}
+%\bibliography{refs}
+%\bibliographystyle{iopart-num}
+%
+%\end{document}
+%
+%
+%
+%=======
+%\documentclass[a4paper]{jpconf}
+%\usepackage{graphicx}
+%\usepackage{amssymb}
+%\usepackage{iopams}
+%\usepackage{citesort}
+%
+%\begin{document}
+%\title{Complexity analysis of spatiotemporal pattern of local field potentials from motor cortex.}
+%
+%\author{Narayan Puthanmadam Subramaniyam$^1$, Jari Hyttinen$^1$, \\
+%Nicholas G Hatsopoulos$^2$, and Kazutaka Takahashi$^2$}
+%
+%\address{1. Finland\\
+%2. Department of Organismal Biology and Anatomy, University of Chicago, Chicago, IL 60615, USA}
+%
+%\ead{narayan.ps@tut.fi, \{nicho, kazutaka\}@uchicago.edu}
+%
+%\begin{abstract}
+%All articles {\it must} contain an abstract. This document describes the  preparation of a conference paper to be published in \jpcs\ using \LaTeXe\ and the \cls\ class file. The abstract text should be formatted using 10 point font and indented 25 mm from the left margin. Leave 10 mm space after the abstract before you begin the main text of your article. The text of your article should start on the same page as the abstract. The abstract follows the addresses and should give readers concise information about the content of the article and indicate the main results obtained and conclusions drawn. As the abstract is not part of the text it should be complete in itself; no table numbers, figure numbers, references or displayed mathematical expressions should be included. It should be suitable for direct inclusion in abstracting services and should not normally exceed 200 words. The abstract should generally be restricted to a single paragraph. Since contemporary information-retrieval systems rely heavily on the content of titles and abstracts to identify relevant articles in literature searches, great care should be taken in constructing both.
+%\end{abstract}
+%
+%\section{Introduction}
+%
+%Local field potential (LFP)
+%observed across the arm area of the primary motor cortex (MI) of
+%nonhuman primates propagate as plane waves along the rostrocaudal
+%axis of the motor cortex during motor preparation and execution, and are
+%believed to subserve cortical information transfer
+%\cite{ref:Rubino}. They represent the summed activity of multiple
+%postsynaptic potentials near the recording electrode site;
+%however, little is known about the relationship between the wave
+%propagation of cortical oscillations and the information flow
+%among individual neurons across the motor cortex. Recently, directed
+%information between pairs of neurons was studied using multiple
+%spike trains in the MI of a monkey \cite{ref:Chris2011}, but they
+%considered only pairwise directed information and did not analyze
+%how the network might change in relationship to the stimulus.
+%
+%
+%
+%\cite{doug2006betawave}, \cite{taka2011humanbetawave}
+%
+%\section{Method}
+%\label{sec:method}
+%
+%\subsection{Behavior task and data collection}
+%
+%All of the surgical and behavioral procedures were approved by the
+%University of Chicago IACUC and conform to the principles outlines
+%in the Guide for the Care and Use of Laboratory Animals. One
+%monkey was trained to perform a visuomotor task using a two-link
+%exoskeleton manipulandum \cite{ref:Scott99}. The monkey was
+%required to move a cursor on a horizontal screen that was aligned
+%to the monkey's hand to the position of a target. When the monkey
+%successfully reached the current target, a new target was
+%displayed at a random location within a workspace while the
+%current target disappeared. The monkey received a juice reward
+%after successfully acquiring five or seven consecutive targets.
+%
+%We recorded multiple single unit spiking activities from MI in
+%a monkey using an Utah microelectrode array (Blackrock
+%Microsystems; $1$ mm in length and $400 \mu$m inter-electrode
+%spacing) implanted contralateral to the moving arm. Neural
+%spikes from up to 96 channels were recorded at $30$ kHz. Spike
+%waveforms were sorted offline using a semiautomated method
+%incorporating a previously published algorithm
+%\cite{ref:VargasIrwin2007}. Signal to noise ratio (SNR) for each
+%unit were defined as the difference in mean peak to trough voltage
+%divided by twice the mean standard deviation computed from all the
+%spikes at each sample points. All the units with SNR$<3$ were
+%discarded for the current study. The data for each neuron was
+%converted to a binary time series with 1 ms time resolution. Among
+%$115$ neurons available for analysis, we used only 25 neurons that
+%were recorded from electrodes located on even numbered rows and
+%columns on 10 x 10 grid on the multielectrode array due to the
+%computational load. Three data sets, each with 1,000 consecutive
+%successful trials, were constructed. Each data set consisted of
+%three sub data sets collected from the following time windows in
+%relation to visual cue onset, $[-100, 50]$, $[50, 200]$, and
+%$[200, 350]$ ms.
+%
+%
+%
+%\subsection{Recurrence Networks}
+%Given an univariate time series $\{u(i) , i = 1,2, \cdots ,N \}$, one can reconstruct the phase space trajectory of the underlying dynamics using the method of delays ref.~\cite{takens1981detecting}
+%\begin{equation}
+%\mathbf{x}_{i} = (u(i),u(i+\tau),\cdots,u(i+(m-1)\tau)),
+%\end{equation}
+%where $\mathbf{x}_{i} \in \mathbb{R}^m$, $\tau$ is the embedding delay determined as the first local minimum of the auto mutual information and $m$ is the embedding dimension which can be determined using the false nearest neighbor (FNN) approach. One can visualize the dynamics of the phase space trajectories using the method of recurrence plots ref.~\cite{eckmann1987recurrence}. A Recurrence plot (RP) is a graphical representation of the recurrence matrix, which is a closeness test depicting the times when two states visit roughly the same area in phase space. This closeness can be defined based on Euclidean or Manhattan or maximum norm. A recurrence matrix $\mathbf{R}$ depicting the closeness between the pairs of state vectors can be given as ref.~\cite{marwan2009complex,donner2010recurrence}
+%\begin{equation}
+%R_{i,j}(\epsilon)=\Theta(\varepsilon - \| x_{i}-x_{j}\|),
+%\end{equation}
+%where $\Theta(\cdot)$ is the Heaviside function, $\|\cdot\|$ is a distance norm, and $\varepsilon $ is the recurrence threshold specifying the maximum spatial distance of neighboring states. The recurrence matrix is a binary, symmetric matrix with an entry of 1 if the distance between two states is less than the recurrence threshold $\varepsilon$, else the entry is 0. The recurrence matrix can be reinterpreted as an adjacency matrix after the following transformation ref.~\cite{marwan2009complex,donner2010recurrence},
+%\begin{equation}
+%\mathbf{A} = \mathbf{R}-\mathbf{I},
+%\end{equation}
+%where $\mathbf{I}$ is the identity matrix. The above operation simply eliminates the artificial self-loops. The adjacency matrix $\mathbf{A}$ represents an undirected, unweighted complex network known as the recurrence network ref.~\cite{donner2010recurrence}. 
+%The recurrence network can be characterized using graph theoretical methods to reflect the dynamically invariant properties of the associated dynamical system. In this work, we compute the global clustering coefficient $C$ of the recurrence network. Given a network with $N$ nodes and $V$ vertices, the local clustering coefficient of a node $i$ can be defined as the likelihood that the neighbors of $i$ will also be neighbors of each other. Formally, the local clustering coefficient of a node $i$ can be given as ref.~\cite{watts1998collective},
+%\begin{equation}
+%c(i)=\frac{\sum_{j,r}A_{i,j}A_{j,r}A_{r,i}}{k_{i}(k_{i}-1)},
+%\end{equation}
+%where $k$ is the degree of a node. The Global clustering coefficient is simply the average of local clustering coefficient computed over all the nodes of a network and is given as,
+%\begin{equation}
+%C= \frac{1}{N}\sum_{i\in\mathcal{N}}c(i).
+%\end{equation}
+%
+%In this work, we divided the LFP data from all the 96 channels into 8 overlapping windows for each event and computed the recurrence network measure $C$ for each window. In order to find the optimal embedding parameters, we computed the first local minimum of the auto mutual information for data from all the channels and found that $\tau$ varied between 2 and 6. Similarly, to determine the embedding dimension, we used the improved FNN approach \cite{hegger1999improved} to avoid spurious effects due to noise. This method excludes all the pairs of state vectors whose initial distance is greater than $\sigma/r$, where the threshold $r$ is set to the standard choice of 10 \cite{hegger1999improved} and $\sigma$ is the standard deviation of the data. Using this approach, we found that the embedding dimension varied between 3 to 5 for all the data. Thus we fixed the embedding delay at 6 and the embedding dimension at 5 for the entire dataset.  Instead of specifying the recurrence threshold $\varepsilon$, we fixed the recurrence rate $RR = 0.03$ so that we obtain recurrence networks with approximately the same number of edges so that we can directly compare the network measures obtained from different time windows \cite{donner2011recurrence}. 
+%
+%\section{Results}
+%\label{sec:results}
+%
+%The causality networks between the recorded neural spike trains
+%were identified using the method in \cite{ref:Sanggyun}, and the
+%results were illustrated in Fig.~\ref{fig:cnetwork}.
+%Fig.~\ref{fig:cnetwork}~(a), (b), and (c) show the statistically
+%significant causal interactions at different timings in relation
+%to the visual cue onset: Time Window 1 for $[-100, 50]$ ms, 2 for
+%$[50, 200]$ ms, and 3 for $[200, 350]$ ms, respectively. The
+%relative positions of neurons in the diagrams correspond to the
+%relative positions of the electrode on the array where the neurons
+%were detected. Adjacent neurons (nodes) were recorded from a same
+%electrode. The location of the array is such that the lower right
+%corner is oriented caudal and the upper left rostral.
+%
+%\begin{figure}[ht!]
+%\begin{center}
+%\includegraphics[width=3.4in]{cnetworks.eps}
+%\end{center}
+%\caption{A diagram of causality networks estimated at different
+%timings in relation to the visual cue onset: Time Window 1 for
+%$[-100, 50]$ ms, 2 for $[50, 200]$ ms, and 3 for $[200, 350]$ ms,
+%respectively. (a) Causality network estimated for Time Window 1 is
+%illustrated. (b) Causality network estimated for Time Window 2 is
+%illustrated. More neurons were causally influencing each other.
+%(c) Causality network estimated for Time Window 3 is illustrated.
+%Less significant causal interactions were detected than Time
+%Window 2.} \label{fig:cnetwork}
+%\end{figure}
+%
+%As shown in Fig.~\ref{fig:cnetwork}, most causal interactions were
+%detected for Time Window 2 than other two intervals. These
+%causality networks were obtained from the data set1, and we
+%obtained similar results using data sets 2 and 3 as well. In order
+%to look into the causality network consistency over data sets, we
+%plotted the degrees of all neurons for 3 data sets in
+%Fig.~\ref{fig:degree}.  All data sets had similar distributions of
+%degrees and same `hub' neurons 9 and 15 - neurons with unusually
+%high degree. Interestingly neurons recorded from a same electrode
+%were not interacting with one another, but they were causally
+%influencing on neurons from different electrodes.
+%
+%\begin{figure}[ht!]
+%\begin{center}
+%\includegraphics[width=3.8in]{degrees.eps}
+%\end{center}
+%\caption{The degrees of all neurons obtained for Time Window 2 are
+%illustrated over 3 data sets. Similar distributions of degrees and
+%same hub neurons 9 and 15 were observed for all 3 data sets.}
+%\label{fig:degree}
+%\end{figure}
+%
+%Fig.~\ref{fig:num_neurons} shows that across three different data
+%sets, the numbers of pairs exhibiting statistically significant
+%causal relationships are highest over a time window 2 of $[50, 200]$
+%ms after the visual cues instructing the locations of the upcoming
+%movements.
+%
+%\begin{figure}[ht!]
+%\begin{center}
+%\includegraphics[width=3.6in]{cnet_number_of_neurons.eps}
+%\end{center}
+%\caption{Number of statistically significant causal interactions
+%at different timings in relation to the visual cue onset. Each
+%data set showed the maximum number of causal relations right after
+%visual cue presentations, Time Window 2.} \label{fig:num_neurons}
+%\end{figure}
+%
+%\section{Discussions}
+%\label{sec:discussions}
+%
+%\section{References}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%In the online version of \jpcs\ references will be linked to their original source or to the article within a secondary service such as INSPEC or ChemPort wherever possible. To facilitate this linking extra care should be taken when preparing reference lists. 
+%
+%Two different styles of referencing are in common use: the Harvard alphabetical system and the Vancouver numerical system.  For \jpcs, the Vancouver numerical system is preferred but authors should use the Harvard alphabetical system if they wish to do so. In the numerical system references are numbered sequentially throughout the text within square brackets, like this [2], and one number can be used to designate several references.  
+%
+%\subsection{Using \BibTeX}
+%We highly recommend the {\ttfamily\textbf\selectfont iopart-num} \BibTeX\ package by Mark~A~Caprio \cite{iopartnum}, which is included with this documentation.
+%
+%\subsection{Reference lists}
+%A complete reference should provide the reader with enough information to locate the article concerned, whether published in print or electronic form, and should, depending on the type of reference, consist of:  
+%
+%\begin{itemize}
+%\item name(s) and initials;
+%\item date published;
+%\item title of journal, book or other publication; 
+%\item titles of journal articles may also be included (optional);
+%\item volume number;
+%\item editors, if any;
+%\item town of publication and publisher in parentheses for {\it books};
+%\item the page numbers.
+%\end{itemize}
+%
+%Up to ten authors may be given in a particular reference; where 
+%there are more than ten only the first should be given followed by 
+%`{\it et al}'. If an author is unsure of a particular journal's abbreviated title it is best to leave the title in 
+%full. The terms {\it loc.\ cit.\ }and {\it ibid.\ }should not be used. 
+%Unpublished conferences and reports should generally not be included 
+%in the reference list and articles in the course of publication should 
+%be entered only if the journal of publication is known. 
+%A thesis submitted for a higher degree may be included 
+%in the reference list if it has not been superseded by a published 
+%paper and is available through a library; sufficient information 
+%should be given for it to be traced readily.
+%
+%\subsection{Formatting reference lists}
+%Numeric reference lists should contain the references within an unnumbered section (such as \verb"\section*{References}"). The 
+%reference list itself is started by the code 
+%\verb"\begin{thebibliography}{<num>}", where \verb"<num>" is the largest
+%number in the reference list and is completed by
+%\verb"\end{thebibliography}". 
+%Each reference starts with \verb"\bibitem{<label>}", where `label' is the label used for cross-referencing. Each \verb"\bibitem" should only contain a reference to a single article (or a single article and a preprint reference to the same article).  When one number actually covers a group of two or more references to different articles, \verb"\nonum"
+%should replace \verb"\bibitem{<label>}" at
+%the start of each reference in the group after the first.
+%
+%For an alphabetic reference list use \verb"\begin{thereferences}" ... \verb"\end{thereferences}" instead of the
+%`thebibliography' environment and each reference can be start with just \verb"\item" instead of \verb"\bibitem{label}"
+%as cross referencing is less useful for alphabetic references.
+%
+%\subsection {References to printed journal articles}
+%A normal reference to a journal article contains three changes of font (see table \ref{jfonts}) and is constructed as follows:
+%
+%\begin{itemize}
+%\item the authors should be in the form surname (with only the first letter capitalized) followed by the initials with no periods after the initials. Authors should be separated by a comma except for the last two which should be separated by `and' with no comma preceding it;
+%\item the article title (if given) should be in lower case letters, except for an initial capital, and should follow the date;
+%\item the journal title is in italic and is abbreviated. If a journal has several parts denoted by different letters the part letter should be inserted after the journal in Roman type, e.g. {\it Phys. Rev.} A;
+%\item the volume number should be in bold type;
+%\item both the initial and final page numbers should be given where possible. The final page number should be in the shortest possible form and separated from the initial page number by an en rule `-- ', e.g. 1203--14, i.e. the numbers `12' are not repeated.
+%\end{itemize}
+%
+%A typical (numerical) reference list might begin
+%
+%\medskip
+%\begin{thebibliography}{9}
+%\item Strite S and Morkoc H 1992 {\it J. Vac. Sci. Technol.} B {\bf 10} 1237 
+%\item Jain S C, Willander M, Narayan J and van Overstraeten R 2000 
+%{\it J. Appl. Phys}. {\bf 87} 965 
+%\item Nakamura S, Senoh M, Nagahama S, Iwase N, Yamada T, Matsushita T, Kiyoku H 
+%and 	Sugimoto Y 1996 {\it Japan. J. Appl. Phys.} {\bf 35} L74 
+%\item Akasaki I, Sota S, Sakai H, Tanaka T, Koike M and Amano H 1996 
+%{\it Electron. Lett.} {\bf 32} 1105 
+%\item O'Leary S K, Foutz B E, Shur M S, Bhapkar U V and Eastman L F 1998 
+%{\it J. Appl. Phys.} {\bf 83} 826 
+%\item Jenkins D W and Dow J D 1989 {\it Phys. Rev.} B {\bf 39} 3317 
+%\end{thebibliography}
+%\smallskip
+%
+%\noindent which would be obtained by typing
+%
+%\begin{verbatim}
+%\begin{\thebibliography}{9}
+%\item Strite S and Morkoc H 1992 {\it J. Vac. Sci. Technol.} B {\bf 10} 1237 
+%\item Jain S C, Willander M, Narayan J and van Overstraeten R 2000 
+%{\it J. Appl. Phys}. {\bf 87} 965 
+%\item Nakamura S, Senoh M, Nagahama S, Iwase N, Yamada T, Matsushita T, Kiyoku H 
+%and 	Sugimoto Y 1996 {\it Japan. J. Appl. Phys.} {\bf 35} L74 
+%\item Akasaki I, Sota S, Sakai H, Tanaka T, Koike M and Amano H 1996 
+%{\it Electron. Lett.} {\bf 32} 1105 
+%\item O'Leary S K, Foutz B E, Shur M S, Bhapkar U V and Eastman L F 1998 
+%{\it J. Appl. Phys.} {\bf 83} 826 
+%\item Jenkins D W and Dow J D 1989 {\it Phys. Rev.} B {\bf 39} 3317 
+%\end{\thebibliography}
+%\end{verbatim}
+%
+%\begin{center}
+%\begin{table}[h]
+%\centering
+%\caption{\label{jfonts}Font styles for a reference to a journal article.} 
+%\begin{tabular}{@{}l*{15}{l}}
+%\br
+%Element&Style\\
+%\mr
+%Authors&Roman type\\
+%Date&Roman type\\
+%Article title (optional)&Roman type\\
+%Journal title&Italic type\\
+%Volume number&Bold type\\
+%Page numbers&Roman type\\
+%\br
+%\end{tabular}
+%\end{table}
+%\end{center}
+%
+%\subsection{References to \jpcs\ articles}
+%Each conference proceeding published in \jpcs\ will be a separate {\it volume}; 
+%references should follow the style for conventional printed journals. For example:\vspace{6pt}
+%\numrefs{1}
+%\item Douglas G 2004 \textit{J. Phys.: Conf. Series} \textbf{1} 23--36
+%\endnumrefs
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{References to preprints}
+%For preprints there are two distinct cases:
+%\renewcommand{\theenumi}{\arabic{enumi}}
+%\begin{enumerate}
+%\item Where the article has been published in a journal and the preprint is supplementary reference information. In this case it should be presented as:
+%\medskip
+%\numrefs{1}
+%\item Kunze K 2003 T-duality and Penrose limits of spatially homogeneous and inhomogeneous cosmologies {\it Phys. Rev.} D {\bf 68} 063517 ({\it Preprint} gr-qc/0303038)
+%\endnumrefs
+%\item Where the only reference available is the preprint. In this case it should be presented as
+%\medskip
+%\numrefs{1}
+%\item Milson R, Coley A, Pravda V and Pravdova A 2004 Alignment and algebraically special tensors {\it Preprint} gr-qc/0401010
+%\endnumrefs
+%\end{enumerate}
+%
+%\subsection{References to electronic-only journals}
+%In general article numbers are given, and no page ranges, as most electronic-only journals start each article on page 1.
+%
+%\begin{itemize} 
+%\item For {\it New Journal of Physics} (article number may have from one to three digits)
+%\numrefs{1}
+%\item Fischer R 2004 Bayesian group analysis of plasma-enhanced chemical vapour deposition data {\it New. J. Phys.} {\bf 6} 25 
+%\endnumrefs
+%\item For SISSA journals the volume is divided into monthly issues and these form part of the article number
+%
+%\numrefs{2}
+%\item Horowitz G T and Maldacena J 2004 The black hole final state {\it J. High Energy Phys.}  	JHEP02(2004)008
+%\item Bentivegna E, Bonanno A and Reuter M 2004 Confronting the IR fixed point cosmology 	with 	high-redshift observations {\it J. Cosmol. Astropart. Phys.} JCAP01(2004)001  
+%\endnumrefs
+%\end{itemize} 
+%
+%\subsection{References to books, conference proceedings and reports}
+%References to books, proceedings and reports are similar to journal references, but have 
+%only two changes of font (see table~\ref{book}). 
+%
+%\begin{table}
+%\centering
+%\caption{\label{book}Font styles for references to books, conference proceedings and reports.}
+%\begin{tabular}{@{}l*{15}{l}}
+%\br
+%Element&Style\\
+%\mr
+%Authors&Roman type\\
+%Date&Roman type\\
+%Book title (optional)&Italic type\\
+%Editors&Roman type\\
+%Place (city, town etc) of publication&Roman type\\
+%Publisher&Roman type\\
+%Volume&Roman type\\
+%Page numbers&Roman type\\
+%\br
+%\end{tabular}
+%\end{table}
+%
+%Points to note are:
+%\medskip
+%\begin{itemize}
+%\item Book titles are in italic and should be spelt out in full with initial capital letters for all except minor words. Words such as Proceedings, Symposium, International, Conference, Second, etc should be abbreviated to {\it Proc.}, {\it Symp.}, {\it Int.}, {\it Conf.}, {\it 2nd}, respectively, but the rest of the title should be given in full, followed by the date of the conference and the town or city where the conference was held. For Laboratory Reports the Laboratory should be spelt out wherever possible, e.g. {\it Argonne National Laboratory Report}.
+%\item The volume number, for example vol 2, should be followed by the editors, if any, in a form such as `ed A J Smith and P R Jones'. Use {\it et al} if there are more than two editors. Next comes the town of publication and publisher, within brackets and separated by a colon, and finally the page numbers preceded by p if only one number is given or pp if both the initial and final numbers are given.
+%\end{itemize}
+%
+%Examples taken from published papers:
+%\medskip
+%
+%\numrefs{99}
+%\item Kurata M 1982 {\it Numerical Analysis for Semiconductor Devices} (Lexington, MA: Heath)
+%\item Selberherr S 1984 {\it Analysis and Simulation of Semiconductor Devices} (Berlin: Springer)
+%\item Sze S M 1969 {\it Physics of Semiconductor Devices} (New York: Wiley-Interscience)
+%\item Dorman L I 1975 {\it Variations of Galactic Cosmic Rays} (Moscow: Moscow State University Press) p 103
+%\item Caplar R and Kulisic P 1973 {\it Proc. Int. Conf. on Nuclear Physics (Munich)} vol 1 (Amsterdam: 	North-Holland/American Elsevier) p 517
+%\item Cheng G X 2001 {\it Raman and Brillouin Scattering-Principles and Applications} (Beijing: Scientific) 
+%\item Szytula A and Leciejewicz J 1989 {\it Handbook on the Physics and Chemistry of Rare Earths} vol 12, ed K A Gschneidner Jr and L Erwin (Amsterdam: Elsevier) p 133
+%\item Kuhn T 1998 {\it Density matrix theory of coherent ultrafast dynamics Theory of Transport Properties of Semiconductor Nanostructures} (Electronic Materials vol 4) ed E Sch\"oll (London: Chapman and Hall) chapter 6 pp 173--214
+%\endnumrefs
+%
+%\section{Tables and table captions}
+%Tables should be numbered serially and referred to in the text 
+%by number (table 1, etc, {\bf rather than} tab. 1). Each table should be a float and be positioned within the text at the most convenient place near to where it is first mentioned in the text. It should have an 
+%explanatory caption which should be as concise as possible. 
+%
+%\subsection{The basic table format}
+%The standard form for a table is:
+%\begin{verbatim}
+%\begin{table}
+%\caption{\label{label}Table caption.}
+%\begin{center}
+%\begin{tabular}{llll}
+%\br
+%Head 1&Head 2&Head 3&Head 4\\
+%\mr
+%1.1&1.2&1.3&1.4\\
+%2.1&2.2&2.3&2.4\\
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+%\end{verbatim}
+%
+%The above code produces table~\ref{ex}.
+%
+%\begin{table}[h]
+%\caption{\label{ex}Table caption.}
+%\begin{center}
+%\begin{tabular}{llll}
+%\br
+%Head 1&Head 2&Head 3&Head 4\\
+%\mr
+%1.1&1.2&1.3&1.4\\
+%2.1&2.2&2.3&2.4\\
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+%
+%Points to note are:
+%\medskip
+%\begin{enumerate}
+%\item The caption comes before the table.
+%\item The normal style is for tables to be centred in the same way as
+%equations. This is accomplished
+%by using \verb"\begin{center}" \dots\ \verb"\end{center}".
+%
+%\item The default alignment of columns should be aligned left.
+%
+%\item Tables should have only horizontal rules and no vertical ones. The rules at
+%the top and bottom are thicker than internal rules and are set with
+%\verb"\br" (bold rule). 
+%The rule separating the headings from the entries is set with
+%\verb"\mr" (medium rule). These commands do not need a following double backslash.
+%
+%\item Numbers in columns should be aligned as appropriate, usually on the decimal point;
+%to help do this a control sequence \verb"\lineup" has been defined 
+%which sets \verb"\0" equal to a space the size of a digit, \verb"\m"
+%to be a space the width of a minus sign, and \verb"\-" to be a left
+%overlapping minus sign. \verb"\-" is for use in text mode while the other
+%two commands may be used in maths or text.
+%(\verb"\lineup" should only be used within a table
+%environment after the caption so that \verb"\-" has its normal meaning
+%elsewhere.) See table~\ref{tabone} for an example of a table where
+%\verb"\lineup" has been used.
+%\end{enumerate}
+%
+%\begin{table}[h]
+%\caption{\label{tabone}A simple example produced using the standard table commands 
+%and $\backslash${\tt lineup} to assist in aligning columns on the 
+%decimal point. The width of the 
+%table and rules is set automatically by the 
+%preamble.} 
+%
+%\begin{center}
+%\lineup
+%\begin{tabular}{*{7}{l}}
+%\br                              
+%$\0\0A$&$B$&$C$&\m$D$&\m$E$&$F$&$\0G$\cr 
+%\mr
+%\0\023.5&60  &0.53&$-20.2$&$-0.22$ &\01.7&\014.5\cr
+%\0\039.7&\-60&0.74&$-51.9$&$-0.208$&47.2 &146\cr 
+%\0123.7 &\00 &0.75&$-57.2$&\m---   &---  &---\cr 
+%3241.56 &60  &0.60&$-48.1$&$-0.29$ &41   &\015\cr 
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+% 
+%\section{Figures and figure captions}
+%Figures must be included in the source code of an article at the appropriate place in the text not grouped together at the end. 
+%
+%Each figure should have a brief caption describing it and, if 
+%necessary, interpreting the various lines and symbols on the figure. 
+%As much lettering as possible should be removed from the figure itself and 
+%included in the caption. If a figure has parts, these should be 
+%labelled ($a$), ($b$), ($c$), etc. 
+%\Tref{blobs} gives the definitions for describing symbols and lines often
+%used within figure captions (more symbols are available
+%when using the optional packages loading the AMS extension fonts).
+%
+%\begin{table}[h]
+%\caption{\label{blobs}Control sequences to describe lines and symbols in figure 
+%captions.}
+%\begin{center}
+%\begin{tabular}{lllll}
+%\br
+%Control sequence&Output&&Control sequence&Output\\
+%\mr
+%\verb"\dotted"&\dotted        &&\verb"\opencircle"&\opencircle\\
+%\verb"\dashed"&\dashed        &&\verb"\opentriangle"&\opentriangle\\
+%\verb"\broken"&\broken&&\verb"\opentriangledown"&\opentriangledown\\
+%\verb"\longbroken"&\longbroken&&\verb"\fullsquare"&\fullsquare\\
+%\verb"\chain"&\chain          &&\verb"\opensquare"&\opensquare\\
+%\verb"\dashddot"&\dashddot    &&\verb"\fullcircle"&\fullcircle\\
+%\verb"\full"&\full            &&\verb"\opendiamond"&\opendiamond\\
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+%
+%
+%Authors should try and use the space allocated to them as economically as possible. At times it may be convenient to put two figures side by side or the caption at the side of a figure. To put figures side by side, within a figure environment, put each figure and its caption into a minipage with an appropriate width (e.g. 3in or 18pc if the figures are of equal size) and then separate the figures slightly by adding some horizontal space between the two minipages (e.g. \verb"\hspace{.2in}" or \verb"\hspace{1.5pc}". To get the caption at the side of the figure add the small horizontal space after the \verb"\includegraphics" command and then put the \verb"\caption" within a minipage of the appropriate width aligned bottom, i.e. \verb"\begin{minipage}[b]{3in}" etc (see code in this file used to generate figures 1--3).
+%
+%Note that it may be necessary to adjust the size of the figures (using optional arguments to \verb"\includegraphics", for instance \verb"[width=3in]") to get you article to fit within your page allowance or to obtain good page breaks.
+%
+%\begin{figure}[h]
+%\begin{minipage}{14pc}
+%\includegraphics[width=14pc]{name.eps}
+%\caption{\label{label}Figure caption for first of two sided figures.}
+%\end{minipage}\hspace{2pc}%
+%\begin{minipage}{14pc}
+%\includegraphics[width=14pc]{name.eps}
+%\caption{\label{label}Figure caption for second of two sided figures.}
+%\end{minipage} 
+%\end{figure}
+%
+%\begin{figure}[h]
+%\includegraphics[width=14pc]{name.eps}\hspace{2pc}%
+%\begin{minipage}[b]{14pc}\caption{\label{label}Figure caption for a narrow figure where the caption is put at the side of the figure.}
+%\end{minipage}
+%\end{figure}
+%
+%Using the graphicx package figures can be included using code such as:
+%\begin{verbatim}
+%\begin{figure}
+%\begin{center}
+%\includegraphics{file.eps}
+%\end{center}
+%\caption{\label{label}Figure caption}
+%\end{figure}
+%\end{verbatim}
+%
+%\section*{References}
+%%\begin{thebibliography}{9}
+%%\bibitem{iopartnum} IOP Publishing is to grateful Mark A Caprio, Center for %Theoretical Physics, Yale University, for permission to include the {\tt %iopart-num} \BibTeX package (version 2.0, December 21, 2006) with  this %documentation. Updates and new releases of {\tt iopart-num} can be found on %%\verb"www.ctan.org" (CTAN). 
+%%\end{thebibliography}
+\bibliography{refs}
+\bibliographystyle{iopart-num}
+
+\end{document}
