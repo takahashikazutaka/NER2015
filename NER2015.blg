@@ -3,10 +3,13 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: NER2015.aux
 The style file: IEEEbib.bst
 Database file #1: refs.bib
+Warning--I didn't find a database entry for "andrzejak2001indications"
+Warning--I didn't find a database entry for "subramaniyam2014characterization"
+Warning--I didn't find a database entry for "subramaniyam2013analysis"
 Warning--I didn't find a database entry for "ref:Scott99"
 You've used 13 entries,
             1838 wiz_defined-function locations,
-            555 strings with 6060 characters,
+            558 strings with 6140 characters,
 and the built_in function-call counts, 3332 in all, are:
 = -- 300
 > -- 157
@@ -45,4 +48,4 @@ warning$ -- 0
 while$ -- 32
 width$ -- 15
 write$ -- 148
-(There was 1 warning)
+(There were 4 warnings)

@@ -3,7 +3,7 @@
 \usepackage{amssymb}\usepackage{amsmath}\usepackage{amsfonts}
 \usepackage[mathcal, mathscr]{eucal}
 \usepackage{graphicx}
-\usepackage{epstopdf}
+%\usepackage{epstopdf}
 \newcommand{\vect}{\boldsymbol}
 \newcommand{\matr}{\boldsymbol}
 \newcommand{\diag}{\textrm{diag}}
@@ -35,10 +35,11 @@ Complexity analysis of spatiotemporal pattern of local field potentials from mot
 % PIN:  26810 (ZC),
 % 42117 (KT), 17447 (NGH)
 
-\author{Narayan Puthanmadam Subramaniyam {\em Student Member, IEEE}, Jari Hyttine {\em Member, IEEE}, \\
-Kazutaka Takahashi*, {\em Senior Member, IEEE}, \\
-\thanks{N.P. Subramaniyam and J. Hyttine are with (Email: \{narayan.ps, jari.hyttinen\}@tut.fi,) This work was supported ... .K. Takahashi is with Department of Organismal Biology and Anatomy, University of Chicago, IL 60637 USA. 
- (Email: kazutaka@uchicago.edu)}}
+\author{Narayan Puthanmadam Subramaniyam, {\em Student Member, IEEE}, Jari Hyttine, {\em Member, IEEE}, \\
+Kazutaka Takahashi, {\em Senior Member, IEEE}, \\
+\thanks{N.P. Subramaniyam and J. Hyttine are with ... 
+(Email: \{narayan.ps, jari.hyttinen\}@tut.fi,) This work was supported ... .K. Takahashi is with Department of Organismal Biology and Anatomy, University of Chicago, IL 60637 USA. 
+ (Email: kazutaka@uchicago.edu). This work was supported by NIH R01 NS04853 and R01 DE023816.}}
 
 \begin{document}
 
@@ -57,7 +58,7 @@ However, its dynamical behavior has not been well characterized. Furthermore, sp
 \end{abstract}
 
 \begin{keywords}
-premotor cortex, motor cortex, decoding, variational Bayesian inference, functional connectivity
+Local field potentials, event evoked potentials, recurrence network, temporal dynamics, spatiotemporal dynamics,  motor cortex, functional connectivity
 \end{keywords}
 
 
@@ -67,7 +68,7 @@ premotor cortex, motor cortex, decoding, variational Bayesian inference, functio
 %
 %\author{Narayan Puthanmadam Subramaniyam$^1$, Jari Hyttinen$^1$, \\
 %Nicholas G Hatsopoulos$^2$, and Kazutaka Takahashi$^2$}
-%
+%narayan83
 %\address{1. Department of Biomedical Engineering, Tampere University of Technology, Tampere, Finland\\
 %2. Department of Organismal Biology and Anatomy, University of Chicago, Chicago, IL 60615, USA}
 %
@@ -76,11 +77,7 @@ premotor cortex, motor cortex, decoding, variational Bayesian inference, functio
 
 
 \section{Introduction}
-Cortical rhythms have been extensively studied since early descriptions of oscillations in sensorimotor cortex by Jasper and Penfield \cite{jasper1949}. Since In particular, local field potentials (LFPs)
-and electroencephalograms (EEG) in the $\beta$ frequency range (15-40 Hz) are ubiquitous in the motor cortex of mammals including monkeys and humans across the upper limb area of the primary motor cortex (MI). The dynamics of the $\beta$ oscillation has been grossly characterized, based on a temporal profile of the amplitude of the oscillations, such as event related synchronization (ERS) and event related desynchronization (ERD) \cite{neuper2001, Jurkiewicz20061281}, and phase locking to the instruction cues \cite{jake2011}. However, the dynamical properties of $\beta$ oscillations have not been well characterized. Recently, it has been reported that phase of $\beta$ oscillations propagated as plane waves along the rostrocaudal
-axis of the motor cortex during motor preparation and execution, and are
-believed to subserve cortical information transfer
-\cite{doug2006betawave}. However, it has not been shown inherent dynamics of LFPs, in particular, $\beta$ oscillations, and their spatiotemporal dynamics. 
+Cortical rhythms have been extensively studied since early descriptions of oscillations in sensorimotor cortex by Jasper and Penfield \cite{jasper1949}. Since In particular, local field potentials (LFPs) and electroencephalograms (EEG) in the $\beta$ frequency range (15-40 Hz) are ubiquitous in the motor cortex of mammals including monkeys and humans across the upper limb area of the primary motor cortex (MI). The dynamics of the $\beta$ oscillation has been grossly characterized, based on a temporal profile of the amplitude of the oscillations, such as event related synchronization (ERS) and event related desynchronization (ERD) \cite{neuper2001, Jurkiewicz20061281}, and phase locking to the instruction cues \cite{jake2011}. However, the dynamical properties of $\beta$ oscillations have not been well characterized. Recently, it has been reported that phase of $\beta$ oscillations propagated as plane waves along the rostrocaudal axis of the motor cortex during motor preparation and execution, and are believed to subserve cortical information transfer \cite{doug2006betawave}. However, it has not been shown inherent dynamics of LFPs, in particular, $\beta$ oscillations, and their spatiotemporal dynamics. The dynamics of neurons in general can be considered as nonlinear, mainly arising from the threshold and saturation phenomena \cite{andrzejak2001indications}. It has been recently shown that methods based on recurrence plots, particularly recurrence networks (RN) can be used to study the structural complexity of the EEG signals \cite{subramaniyam2014characterization, subramaniyam2013analysis}. One particular advantage of  RN based analysis is that it can be applied to short segments of data, since the network properties like global clustering coefficient $C$ or average path length $L$ can still be reliably estimated. The topological characterization of the RN using such network properties can provide insights into the complexity of the dynamics associated with the time series \cite{donner2010recurrence}.
 
 
 
@@ -121,11 +118,12 @@ $[200, 350]$ ms.
 
 
 \subsection{Recurrence Networks}
-Given an univariate time series $\{u(i) , i = 1,2, \cdots ,N \}$, one can reconstruct the phase space trajectory of the underlying dynamics using the method of delays ref.~\cite{takens1981detecting}
+Methods
+Given an univariate time series $\{u(i) , i = 1,2, \cdots ,N \}$, one can reconstruct the phase space trajectory of the underlying dynamics using the method of delays \cite{takens1981detecting}
 \begin{equation}
 \mathbf{x}_{i} = (u(i),u(i+\tau),\cdots,u(i+(m-1)\tau)),
 \end{equation}
-where $\mathbf{x}_{i} \in \mathbb{R}^m$, $\tau$ is the embedding delay determined as the first local minimum of the auto mutual information and $m$ is the embedding dimension which can be determined using the false nearest neighbor (FNN) approach. One can visualize the dynamics of the phase space trajectories using the method of recurrence plots ref.~\cite{eckmann1987recurrence}. A Recurrence plot (RP) is a graphical representation of the recurrence matrix, which is a closeness test depicting the times when two states visit roughly the same area in phase space. This closeness can be defined based on Euclidean or Manhattan or maximum norm. A recurrence matrix $\mathbf{R}$ depicting the closeness between the pairs of state vectors can be given as in~\cite{marwan2009complex,donner2010recurrence}
+where $\mathbf{x}_{i} \in \mathbb{R}^m$, $\tau$ is the embedding delay determined as the first local minimum of the auto mutual information and $m$ is the embedding dimension which can be determined using the false nearest neighbor (FNN) approach. One can visualize the dynamics of the phase space trajectories using the method of recurrence plots \cite{eckmann1987recurrence}. A Recurrence plot (RP) is a graphical representation of the recurrence matrix, which is a closeness test depicting the times when two states visit roughly the same area in phase space. This closeness can be defined based on Euclidean or Manhattan or maximum norm. A recurrence matrix $\mathbf{R}$ depicting the closeness between the pairs of state vectors can be given as \cite{marwan2009complex,donner2010recurrence}
 \begin{equation}
 R_{i,j}(\epsilon)=\Theta(\varepsilon - \| x_{i}-x_{j}\|),
 \end{equation}
@@ -144,7 +142,8 @@ C= \frac{1}{N}\sum_{i\in\mathcal{N}}c(i).
 \end{equation}
 
 
-In order to perform the analysis described above, we divided the LFP data from all the 96 channels into 8 overlapping windows for each event and computed the recurrence network measure $C$ for each window. In order to find the optimal embedding parameters, we computed the first minimum of the auto mutual information for data from all the channels and found that $\tau$ varied between 2 to 4. Similarly, to determine the embedding dimension, we used the improved FNN approach \cite{hegger1999improved} to avoid spurious effects due to noise and found that the embedding dimension varied between 3 to 5 for all the data. Thus we fixed the embedding delay at 6 and the embedding dimension at 5 (it varied between 3 and 5 as per the modified FNN method) to construct recurrence networks of the same size. Instead of specifying the recurrence threshold $\varepsilon$, we fix the recurrence rate $RR = 0.03$ so that we obtain recurrence networks with approximately the same number of edges so that we can compare the networks obtained from different time windows \cite{donner2011recurrence}. 
+In order to perform the analysis described above, we first averaged the trials of LFP data (-100 ms before the event and 350 ms after the event) for all the 96 channels. The averaged data was divided into highly overlapping windows of length 150 ms and step size 1 ms. The optimal delay and the minimum embedding dimension was computed for all the channels and we found that for most of the data the embedding parameters were, delay $\tau = 5$ and embedding dimension $m=3$. Also, to determine the embedding dimension, we used the improved FNN approach \cite{hegger1999improved} to avoid spurious effects due to noise. Using these embedding parameters we constructed same-sized recurrence networks for every window and channel. Instead of specifying the recurrence threshold $\varepsilon$, we fix the recurrence rate $RR = 0.05$ so that we obtain recurrence networks with approximately the same number of edges so that we can compare the networks obtained from different time windows \cite{donner2011recurrence}.
+
 
 \section{Results}
 \label{sec:results}

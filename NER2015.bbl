@@ -33,6 +33,13 @@ Doug Rubino, K~A Robbins, and Nicholas~G Hatsopoulos,
 \newblock {\em Nature Neuroscience.}, vol. 9, no. 12, pp. 1549--1557, Dec.
   2006.
 
+\bibitem{donner2010recurrence}
+Reik~V Donner, Yong Zou, Jonathan~F Donges, Norbert Marwan, and J{\"u}rgen
+  Kurths,
+\newblock ``Recurrence networks—a novel paradigm for nonlinear time series
+  analysis,''
+\newblock {\em New Journal of Physics}, vol. 12, no. 3, pp. 033025, 2010.
+
 \bibitem{taka2011humanbetawave}
 Kazutaka Takahashi, Maryam Saleh, Richard~D Penn, and Nicholas Hatsopoulos,
 \newblock ``{Propagating waves in human motor cortex},''
@@ -54,13 +61,6 @@ Norbert Marwan, Jonathan~F Donges, Yong Zou, Reik~V Donner, and J{\"u}rgen
   Kurths,
 \newblock ``Complex network approach for recurrence analysis of time series,''
 \newblock {\em Physics Letters A}, vol. 373, no. 46, pp. 4246--4254, 2009.
-
-\bibitem{donner2010recurrence}
-Reik~V Donner, Yong Zou, Jonathan~F Donges, Norbert Marwan, and J{\"u}rgen
-  Kurths,
-\newblock ``Recurrence networks—a novel paradigm for nonlinear time series
-  analysis,''
-\newblock {\em New Journal of Physics}, vol. 12, no. 3, pp. 033025, 2010.
 
 \bibitem{watts1998collective}
 Duncan~J Watts and Steven~H Strogatz,
